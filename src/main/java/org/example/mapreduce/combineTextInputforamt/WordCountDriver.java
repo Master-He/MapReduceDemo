@@ -34,15 +34,15 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        // 如果不设置InputFormat，它默认用的是TextInputFormat.class
+        // 如果不设置InputFormat，它默认用的是TextInputFormat.class // 此时控制台打印日志：number of splits:4
         job.setInputFormatClass(CombineTextInputFormat.class);
 
         //虚拟存储切片最大值设置4m
-//        CombineTextInputFormat.setMaxInputSplitSize(job, 4194304);
-        CombineTextInputFormat.setMaxInputSplitSize(job, 20971520);
+//        CombineTextInputFormat.setMaxInputSplitSize(job, 4194304); // 此时控制台打印日志： number of splits:3
+        CombineTextInputFormat.setMaxInputSplitSize(job, 20971520); // 此时控制台打印日志： number of splits:1
 
 
-        // 6 设置输入路径和输出路径
+        // 6 设置输入路径和输出路径，  将resources/inputcombinetextinputformat 复制到 D:\input\inputcombinetextinputformat
         FileInputFormat.setInputPaths(job, new Path("D:\\input\\inputcombinetextinputformat"));
         FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\outputCombine3"));
 

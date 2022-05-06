@@ -32,7 +32,7 @@ public class LogDriver {
 
         FileInputFormat.setInputPaths(job, new Path("D:\\input\\inputoutputformat"));
         //虽然我们自定义了outputformat，但是因为我们的outputformat继承自fileoutputformat
-        //而fileoutputformat要输出一个_SUCCESS文件，所以在这还得指定一个输出目录
+        //而fileoutputformat要输出一个_SUCCESS文件，所以在这还得指定一个输出目录, 实际结果输出看LogRecordWriter类！
         FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output1111"));
 
         boolean b = job.waitForCompletion(true);
